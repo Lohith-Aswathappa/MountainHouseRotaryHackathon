@@ -224,6 +224,12 @@ body {
     font-weight: 500;
 }
 
+.stat p i {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
 /* Section Styles */
 .section-title {
     text-align: center;
@@ -432,7 +438,7 @@ section {
 /* Team Section */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
@@ -473,6 +479,59 @@ section {
 .team-member p {
     color: #667eea;
     font-weight: 500;
+}
+
+/* Guidelines Section */
+.guidelines {
+    background: #f8f9fa;
+}
+
+.guidelines-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.guideline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.guideline-item:hover {
+    transform: translateY(-5px);
+}
+
+.guideline-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.guideline-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.guideline-text h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.guideline-text p {
+    color: #666;
+    line-height: 1.6;
 }
 
 /* Contact Section */
@@ -684,7 +743,17 @@ section {
     }
 
     .team-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .guidelines-content {
+        grid-template-columns: 1fr;
+    }
+
+    .guideline-item {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
