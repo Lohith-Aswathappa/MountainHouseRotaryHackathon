@@ -230,6 +230,11 @@ body {
     display: block;
 }
 
+/* Force trophy icon size - higher specificity */
+.hero-stats .stat p i.fas.fa-trophy {
+    font-size: 4rem !important;
+}
+
 /* Section Styles */
 .section-title {
     text-align: center;
