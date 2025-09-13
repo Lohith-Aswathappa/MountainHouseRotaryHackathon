@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zillow Data Extractor</title>
+    <link rel="stylesheet" href="zillow-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-home"></i> Zillow Data Extractor</h1>
+            <p>Extract property information from Zillow URLs using RapidAPI</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <h2>Enter Zillow Property URL</h2>
+                <form id="zillowForm" class="zillow-form">
+                    <div class="input-group">
+                        <input 
+                            type="url" 
+                            id="zillowUrl" 
+                            name="zillowUrl" 
+                            placeholder="https://www.zillow.com/homedetails/..." 
+                            required
+                            class="url-input"
+                        >
+                        <button type="submit" class="extract-btn">
+                            <i class="fas fa-search"></i> Extract Data
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="api-key-section">
+                <h3>RapidAPI Configuration</h3>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="rapidApiKey" 
+                        name="rapidApiKey" 
+                        placeholder="Enter your RapidAPI Key" 
+                        class="api-key-input"
+                    >
+                    <button type="button" id="saveApiKey" class="save-btn">
+                        <i class="fas fa-save"></i> Save Key
+                    </button>
+                </div>
+                <p class="api-info">
+                    <i class="fas fa-info-circle"></i> 
+                    Get your RapidAPI key from <a href="https://rapidapi.com/realty-mole-pro-realty-mole-pro-default/api/zillow-com1/" target="_blank">Zillow API on RapidAPI</a>
+                </p>
+            </div>
+
+            <div id="loadingSection" class="loading-section" style="display: none;">
+                <div class="spinner"></div>
+                <p>Extracting property data...</p>
+            </div>
+
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <h2>Property Information</h2>
+                <div class="property-card">
+                    <div class="property-header">
+                        <h3 id="propertyAddress">Property Address</h3>
+                        <span id="propertyPrice" class="price"></span>
+                    </div>
+                    
+                    <div class="property-details">
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class="fas fa-bed"></i>
+                                <span>Bedrooms: <span id="bedrooms">-</span></span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-bath"></i>
+                                <span>Bathrooms: <span id="bathrooms">-</span></span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span>Square Feet: <span id="squareFeet">-</span></span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Listed: <span id="listedDate">-</span></span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>ZPID: <span id="zpid">-</span></span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-home"></i>
+                                <span>Type: <span id="propertyType">-</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-description">
+                        <h4>Description</h4>
+                        <p id="description">No description available.</p>
+                    </div>
+
+                    <div class="property-features">
+                        <h4>Features</h4>
+                        <div id="features" class="features-list">
+                            <!-- Features will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <button id="exportJson" class="export-btn">
+                        <i class="fas fa-download"></i> Export as JSON
+                    </button>
+                    <button id="exportCsv" class="export-btn">
+                        <i class="fas fa-file-csv"></i> Export as CSV
+                    </button>
+                </div>
+            </div>
+
+            <div id="errorSection" class="error-section" style="display: none;">
+                <h3><i class="fas fa-exclamation-triangle"></i> Error</h3>
+                <p id="errorMessage">An error occurred while extracting data.</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Zillow Data Extractor. Powered by RapidAPI.</p>
+        </footer>
+    </div>
+
+    <script src="zillow-script.js"></script>
+</body>
+</html>
